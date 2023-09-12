@@ -23,38 +23,38 @@ public class ChatController {
     private ChatService chatService;
 
     @PostMapping("/createChat")
-    public ResponseEntity<BaseResponse<CreateChatResponse>> createChat(@RequestHeader HttpHeaders header, @RequestBody @Valid CreateChatRequest request) throws MagentaException {
+    public ResponseEntity<BaseResponse<CreateChatResponse>> createChat(@RequestHeader HttpHeaders header, @RequestBody @Valid BaseRequest<CreateChatRequest> request) throws MagentaException {
         logger.info("Calling createChat...");
-        return new ResponseEntity<>(chatService.createChat(header, request), HttpStatus.OK);
+        return new ResponseEntity<>(chatService.createChat(header, request.getData()), HttpStatus.OK);
     }
 
     @PostMapping("/getChats")
-    public ResponseEntity<BaseResponse<GetChatsResponse>> getChats(@RequestHeader HttpHeaders header, @RequestBody @Valid GetChatsRequest request) throws MagentaException {
+    public ResponseEntity<BaseResponse<GetChatsResponse>> getChats(@RequestHeader HttpHeaders header, @RequestBody @Valid BaseRequest<GetChatsRequest> request) throws MagentaException {
         logger.info("Calling getChats...");
-        return new ResponseEntity<>(chatService.getChats(header, request), HttpStatus.OK);
+        return new ResponseEntity<>(chatService.getChats(header, request.getData()), HttpStatus.OK);
     }
 
     @PostMapping("/createMessage")
-    public ResponseEntity<BaseResponse<CreateMessageResponse>> createMessage(@RequestHeader HttpHeaders header, @RequestBody @Valid CreateMessageRequest request) throws MagentaException {
+    public ResponseEntity<BaseResponse<CreateMessageResponse>> createMessage(@RequestHeader HttpHeaders header, @RequestBody @Valid BaseRequest<CreateMessageRequest> request) throws MagentaException {
         logger.info("Calling createMessage...");
-        return new ResponseEntity<>(chatService.createMessage(header, request), HttpStatus.OK);
+        return new ResponseEntity<>(chatService.createMessage(header, request.getData()), HttpStatus.OK);
     }
 
     @PostMapping("/getMessages")
-    public ResponseEntity<BaseResponse<GetMessagesResponse>> getMessages(@RequestHeader HttpHeaders header, @RequestBody @Valid GetMessagesRequest request) throws MagentaException {
+    public ResponseEntity<BaseResponse<GetMessagesResponse>> getMessages(@RequestHeader HttpHeaders header, @RequestBody @Valid BaseRequest<GetMessagesRequest> request) throws MagentaException {
         logger.info("Calling getMessages...");
-        return new ResponseEntity<>(chatService.getMessages(header, request), HttpStatus.OK);
+        return new ResponseEntity<>(chatService.getMessages(header, request.getData()), HttpStatus.OK);
     }
 
     @PostMapping("/readMessage")
-    public ResponseEntity<BaseResponse<ReadMessageResponse>> readMessage(@RequestHeader HttpHeaders header, @RequestBody @Valid ReadMessageRequest request) throws MagentaException {
+    public ResponseEntity<BaseResponse<ReadMessageResponse>> readMessage(@RequestHeader HttpHeaders header, @RequestBody @Valid BaseRequest<ReadMessageRequest> request) throws MagentaException {
         logger.info("Calling readMessage...");
-        return new ResponseEntity<>(chatService.readMessage(header, request), HttpStatus.OK);
+        return new ResponseEntity<>(chatService.readMessage(header, request.getData()), HttpStatus.OK);
     }
 
     @PostMapping("/deleteChat")
-    public ResponseEntity<BaseResponse<DeleteChatResponse>> deleteChat(@RequestHeader HttpHeaders header, @RequestBody @Valid DeleteChatRequest request) throws MagentaException {
+    public ResponseEntity<BaseResponse<DeleteChatResponse>> deleteChat(@RequestHeader HttpHeaders header, @RequestBody @Valid BaseRequest<DeleteChatRequest> request) throws MagentaException {
         logger.info("Calling deleteChat...");
-        return new ResponseEntity<>(chatService.deleteChat(header, request), HttpStatus.OK);
+        return new ResponseEntity<>(chatService.deleteChat(header, request.getData()), HttpStatus.OK);
     }
 }
